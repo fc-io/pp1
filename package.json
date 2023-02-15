@@ -12,6 +12,7 @@
     "date-fns": "^2.29.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "use-interval": "^1.4.0",
     "vercel": "^28.15.5"
   },
   "devDependencies": {
