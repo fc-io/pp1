@@ -1,44 +1,20 @@
 import { useEffect, useState } from "react";
-import { parseISO, intervalToDuration } from 'date-fns'
 // import reactLogo from './assets/react.svg'
 import "./App.css";
 import useInterval from 'use-interval'
-
-function getInterval () {
-  const midsummer = parseISO('2023-06-24T00:00:00')
-  const interval = intervalToDuration({
-    start: new Date(),
-    end: midsummer
-  })
-
-  return interval
-}
+import getInterval from './getInterval'
 
 function App() {
-  const [untilMidsummer, setUntilMidsummer] = useState(getInterval())
+  const midsummer = '2023-06-24T00:00:00'
+  // const start = new Date()
+  const [untilMidsummer, setUntilMidsummer] = useState(getInterval(midsummer))
   const [count, setCount] = useState(0)
 
   useInterval(() => {
-    const interval = getInterval()
+    const interval = getInterval(midsummer)
     setUntilMidsummer(interval)
     setCount(count + 1);
   }, 1000);
-
-
-  // useEffect(() => {
-  //   const intervalId = setInterval(() => {
-  //     const interval = getInterval()
-
-  //     console.log('setInterval')
-
-  //     setUntilMidsummer(interval)
-  //     setCount((latestCount) => latestCount + 1)
-  //   }, 1000)
-
-  //   return () => {
-  //     clearInterval(intervalId)
-  //   }
-  // }, [])
 
   return (
     <div className="App">
